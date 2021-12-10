@@ -1,0 +1,611 @@
+ 33.Berilgan strA da ko'p ishlatilgan char ni toping.
+      strA = "Kallani ishlat latta";
+          
+public class Main {
+
+    public static void main(String[] args) {
+
+        String strA ="Kallani ishlat latta";
+        char[] ch=strA.toCharArray();
+        Map<Character,Integer>map=new HashMap<>();
+     for (int i=0;i<ch.length;i++){
+         if (ch[i]==' ') continue;
+         if (!map.containsKey(ch[i])){
+             map.put(ch[i],1);
+         }else {
+             map.put(ch[i],map.get(ch[i])+1);
+         }
+    }
+        List<Integer>list=new LinkedList<>(map.values());
+        Collections.sort(list);
+        for (char c:map.keySet()){
+            if (map.get(c)==list.get(list.size()-1)){
+                System.out.println(c);
+            }
+        }
+
+    }
+}
+
+output: a
+ izoh a harfi 5marta ishlatilgan.
+
+ 34. Berilgan strA tekstni teskasiga o'girib konsolga chiqaring.
+        	strA = "Kitob o'qing";
+
+a) public class Main {
+
+    public static void main(String[] args) {
+        String strA = "Kitob o'qing";
+        char[] ch = strA.toCharArray();
+        int count = 0;
+        for (int i = ch.length - 1; i > 0; i--) {
+            ch[count] = ch[i];
+            count++;
+        }
+        String reverse = new String(ch);
+        System.out.println(reverse);
+            
+        StringBuilder stringBuilder=new StringBuilder(strA);
+        System.out.println(stringBuilder.reverse());
+    }
+}
+  output: gniq'o botik;
+
+b) public class Main {
+
+    public static void main(String[] args) {
+        String strA = "Kitob o'qing";
+        StringBuilder stringBuilder=new StringBuilder(strA);
+        System.out.println(stringBuilder.reverse());
+    }
+}
+
+  output: gniq'o botik;
+
+
+  35. Berilgan strA tekstni  ichidagi so'zlarni teskarisiga o'qirib ularni konsolga chiqaring.
+        strA = "Ali Valini aldadi";
+public class Main {
+
+    public static void main(String[] args) {
+
+        String strA = "Ali Valini aldadi";
+        StringBuilder stringBuilder = new StringBuilder(strA);
+        String str = stringBuilder.reverse().toString();
+        String[] s = str.split(" ");
+        String newStrA = "";
+        for (int i = s.length - 1; i >= 0; i--) {
+            newStrA += s[i] + " ";
+        }
+        System.out.println(newStrA);
+    }
+}
+
+  output: ilA inilaV idadla.
+
+
+ 36. Berilgan strA tekstinig so'zlatini teskari tartibda yozing.
+	strA = "Ali Valini aldadi";
+public class Main {
+
+    public static void main(String[] args) {
+
+        String strA = "Ali Valini aldadi";
+        String[] s = strA.split(" ");
+        String newStrA = "";
+        for (int i = s.length - 1; i >= 0; i--) {
+            newStrA += s[i] + " ";
+        }
+        System.out.println(newStrA);
+    }
+}
+
+  output: aldadi Valini Ali.
+
+ 37. Berilgan strA tekstidan "i" va "na" so'zlarini olib tashlang va natijani konsolga chiqaring.
+	strA = "Moshinada krutoy nomer bo'lsa moshina uchadimi?"
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        String strA = "Moshinada krutoy nomer bo'lsa moshina uchadimi?";
+        strA = strA.replace("i", "");
+        strA = strA.replace("na", "");
+        System.out.println(strA);
+
+    }
+}
+
+  output: Moshda krutoy nomer bo'lsa mosh uchadimi?
+
+
+ 40. Berilgan strA da takrorlanuvchi charlarni va takrorlangan sonini consolga chiqaring.
+	Faqat takrorlanuvchi charlarni konsolga chiqaramiz.
+     	strA = "Talabalik ochlik davrim"
+import java.util.HashMap;
+import java.util.Map;
+
+public class Main {
+
+    public static void main(String[] args) {
+        String strA = "Talabalik ochlik davrim";
+        char[] ch = strA.toCharArray();
+        Map<Character, Integer> map = new HashMap<>();
+        for (int i = 0; i < ch.length; i++) {
+            if (ch[i] == ' ') continue;
+            if (!map.containsKey(ch[i])) {
+                map.put(ch[i], 1);
+            } else {
+                map.put(ch[i], map.get(ch[i]) + 1);
+            }
+        }
+
+        System.out.println(map);
+        for (char i : map.keySet()) {
+            System.out.println(map.get(i) + "-" + i);
+        }
+    }
+}
+  output: a - 4 
+          l - 3
+          i - 3
+
+
+  41. Berilgan strA va strB bir biriga palindrommi yo'qmi aniqlang.
+	Bir biriga palindrom "palindrom" bo'lmasa "palindrom emas" deb konsolga chiqsin.
+	strA = "ABCD"
+	strB = "DCBA"
+public class Main {
+    public static void main(String[] args) {
+        String strA = "ABCD";
+        String strB = "DCBA";
+        char[]charArr=strA.toCharArray();
+        int count=0;
+        char[]newCharArr=new char[charArr.length];
+        for (int i=charArr.length-1;i>=0;i--){
+            newCharArr[count]=charArr[i];
+        }
+        String newStrA=new String(newCharArr);
+        if (strB.equals(newStrA)){
+            System.out.println("palindrom");
+        }else {
+            System.out.println("palindrom emas");
+        }
+    }
+}
+	
+ output: palindrom emas;
+
+
+43. Berilgan strA va strB ni bir biriga qo'shing.
+	Agar qo'shish jarayonida strA ning oxirgi chari  va strB ning birinchi chari o'xshash bo'lsa o'xshashini o'tkazib yuboring.
+	strA = "olma"
+	strB = "anor"
+public class Main {
+    public static void main(String[] args) {
+        String strA = "olma";
+        String strB = "anor";
+        String newStr;
+        if (strA.charAt(strA.length() - 1) == strB.charAt(0)) {
+            newStr = strA + strB.substring(1);
+            System.out.println(newStr);
+        } else {
+            newStr = strA + strB;
+            System.out.println(newStr);
+        }
+    }
+}
+
+  output: olmanor
+
+
+  44.Berilgan strA ning oxirgi ikkita xarfini o'rnini almashtirib yangi string yasang va konsolga chiqaring.
+          strA="antiseptik"
+
+public class Main {
+    public static void main(String[] args) {
+        String strA = "antiseptik";
+        char[] chars = strA.toCharArray();
+        char c1 = chars[chars.length - 1];
+        char c2 = chars[chars.length - 2];
+        chars[chars.length - 1] = c2;
+        chars[chars.length - 2] = c1;
+        String newStrA = new String(chars);
+        System.out.println(newStrA);
+    }
+}
+
+
+  output:"antiseptki"
+
+
+ 45.Berilgan strA"red"yokiy"black"regnlarigan boshlansa shularni konsolga chiqaring.
+         strA="redtag"
+
+public class Main {
+
+    public static void main(String[] args) {
+        String strA = "redtag";
+        if (strA.startsWith("red")) {
+            System.out.println("red");
+        } else if (strA.startsWith("black")) {
+            System.out.println("black");
+        } else {
+            System.out.println("boshqa soz bilan boshlanadi");
+        }
+    }
+}
+
+  output:red;
+
+
+ 46. Berilgan strA va strB ni birbiriga qo'shib konsolga chiqaring.
+         Agar strA va strB ning uzunliklari teng  bo'lmasa uzun string ni
+         boshidan ortiqcha so'zlar olib tashlansin va keyin  ular qo'shilsin.
+         strA = "kitob"
+         strA = "sevaman"
+public class Main {
+    public static void main(String[] args) {
+        String strA = "kitob";
+        String strB = "sevaman";
+        if (strB.length() > strA.length()) {
+            String newStr = strA + strB.substring(strB.length() - strA.length());
+            System.out.println(newStr);
+        } else if (strB.length() < strA.length()) {
+            String newStr = strB + strA.substring(strA.length() - strB.length());
+            System.out.println(newStr);
+        } else {
+            System.out.println(strA + strB);
+        }
+    }
+}
+
+  output: kitobvaman
+
+
+ 47. Berilgan strA dan berilgan nta xarfni boshidan va oxiridan olib yangi so'z yasang.
+         strA = "dasturlash"
+         n = 3
+
+public class Main {
+    public static void main(String[] args) {
+        String strA = "dasturlash";
+        String newStrA=strA.substring(0,3)+strA.substring(strA.length()-3);
+        System.out.println(newStrA);
+
+    }
+}
+
+   output: dasash;
+
+
+48.Berilgan strA ning boshidagi 2ta xarfi strA ning oxirida bormi yo'qmi aniqlang.
+        Yani shu string boshlangan 2ta xarfi bilan ham tugaydimi.
+        Bo'lsa konsolga ture bo' lmasa false chiqaring.
+        strA="axmoqlargax"
+
+public class Main {
+    public static void main(String[] args) {
+        String strA = "axmoqlargax";
+        if ((strA.startsWith("ax")) && (strA.endsWith("ax"))) {
+            System.out.println(true);
+        } else {
+            System.out.println(false);
+        }
+
+
+    }
+}
+
+
+  output:true;
+
+
+
+ 49. Berilgan strA da "p*p" so'zi bormi yo'qmi aniqlang. "*" ni o'rniga xoxlagan bitta xarf bo'lishi mumkin.
+        strA = "abcpopd"
+
+public class Main {
+    
+    public static void main(String[] args) {
+        String strA = "abcpopd";
+        int index = strA.indexOf("p");
+        int index1 = strA.indexOf("p", index + 1);
+        if (index1 - index == 2) {
+            System.out.println(true);
+        } else {
+            System.out.println(false);
+        }
+    }
+}
+
+   output: true;
+
+
+ 
+ 50.Berilgan strA dan barcha xarflarini takrorlab yangi string yasang.
+         strA="salom";
+
+public class Main {
+
+    public static void main(String[] args) {
+        String strA = "salom";
+        char[] strArr = strA.toCharArray();
+        char[] newStrArr = new char[strA.length() * 2];
+        int count = 0;
+        for (int i = 0; i < strArr.length; i++) {
+            newStrArr[count] = strArr[i];
+            newStrArr[++count] = strArr[i];
+            count++;
+        }
+        String newStrA = new String(newStrArr);
+        System.out.println(newStrA);
+    }
+}
+
+  output:ssaalloomm;
+
+
+ 51.Berilgan strA da berilgan c maxsus ishoradan oldingi va keyingi charlar tengmi?
+        Teng bo'lsa true bo'lmasa false chiqaring.
+        strA="salom#malak"
+        c= #;
+
+public class Main {
+
+    public static void main(String[] args) {
+        String strA = "salom#malak";
+        String c = "#";
+        String[] strArr = strA.split(c);
+        if (strA.contains(c) && strArr[0].endsWith(String.valueOf(strArr[1].charAt(0)))) {
+            System.out.println(true);
+        } else {
+            System.out.println(false);
+        }
+
+    }
+}
+
+ output:true;
+
+
+ 52.Berilgan strA va strB dan yangi String yasang.Yangi string ni strA va strB ning mos keladigan indekslarini olib yasang.
+        strA="salom"
+        strB="dasturlash"
+
+public class Main {
+
+    public static void main(String[] args) {
+        String strA = "salom";
+        String strB = "dasturlash";
+        char[] c1 = strA.toCharArray();
+        char[] c2 = strB.toCharArray();
+        int count = 0;
+        if (c1.length < c2.length) {
+            String substr = strB.substring(strA.length());
+            char[] newArr = new char[c1.length * 2];
+            for (int i = 0; i < strA.length(); i++) {
+                newArr[count] = c1[i];
+                newArr[++count] = c2[i];
+                count++;
+            }
+            String newStr = new String(newArr);
+            String s = newStr + substr;
+            System.out.println(s);
+        }
+    }
+}
+  
+  output:sdaalsotmurlash
+
+
+ 53. Berilgan strA dan ketmaket 3ta birxil char lar nechi marta bor ekanligini toping.
+	strA = "sssalllommmm"
+	Izoh. sss,lll,mmm,mmm (m larda  birinchi 3taligi va 2chi uchtaligi. m lar 4ta yozilgan.)
+
+public class Main {
+
+    public static void main(String[] args) {
+        String strA = "sssalllommmm";
+        char[] chars = strA.toCharArray();
+        int count = 0;
+        for (int i = 0; i < chars.length; i++) {
+            if ((chars.length > (i + 2)) && (chars[i] == chars[i + 1]) && (chars[i] == chars[i + 2])) {
+                count++;
+            }
+        }
+        System.out.println(count);
+    }
+}
+
+  output:4;
+
+
+  55. Berilgan strA da 'm' bilan tugaydigan so'zlarini sonini toping.
+	strA = "Salom men yaxshim , ishlar tichm";
+
+public class Main {
+
+    public static void main(String[] args) {
+        String strA = "Salom men yaxshim , ishlar tichm";
+        String[] strArr = strA.split(" ");
+        int count = 0;
+        for (String s : strArr) {
+            if (s.endsWith("m")) {
+                count++;
+            }
+        }
+        System.out.println(count);
+    }
+}
+
+   output: 3;
+
+
+ 56. Berilgan strB dagi charlardan tashkil topgan  char lar ketma-ketligini strA dan o'chirib tashlang va natijani konsolga chiqaring.
+	strA = "Olmaa yisanmi olma."
+	strB = "lma"
+
+public class Main {
+
+    public static void main(String[] args) {
+        String strA = "Olmaa yisanmi olma.";
+        String strB="lma";
+        String newStr=strA.replaceAll(strB,"");
+        System.out.println(newStr);
+    }
+}
+
+  output: Oa yisanmi o;
+
+
+  58. Berilgan strA dan toq index da turgan charlari olib tashlab  yangi string yasang va konsolga chiqaring.
+	strA = "dasturlash.uz";
+
+public class Main {
+
+    public static void main(String[] args) {
+        String strA = "dasturlash.uz";
+        String newStr = "";
+        char[] chars = strA.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            if (i % 2 != 1) {
+                newStr += chars[i];
+
+            }
+        }
+        System.out.println(newStr);
+
+    }
+}
+
+   output: dsuls.z;
+
+
+  59. Berilgan strA  faqat sonlardan tashkil topganmi yo'qmi aniqlang.
+	Faqat sonlar bo'lsa true bo'lmasa false konsolga chiqaring.
+	strA = "12312431234365687";
+
+public class Main {
+
+    public static void main(String[] args) {
+        String strA = "12312431234365687";
+        String[] strArr = strA.split("");
+        int count = 0;
+        for (String c : strArr) {
+            try {
+                int a = Integer.parseInt(c);
+                if (count == strArr.length - 1) {
+                    System.out.println(true);
+                }
+                count++;
+
+            } catch (NumberFormatException e) {
+                System.out.println(false);
+                return;
+            }
+        }
+
+    }
+}
+
+  output: true;
+
+
+ 60. Berilgan strA ni int tipiga o'girib konsolga chiqaring.
+	 strA = "123";
+
+public class Main {
+
+    public static void main(String[] args) {
+        String strA = "123";
+       try {
+           int i=Integer.parseInt(strA.trim());
+           System.out.println(i);
+       }catch (NumberFormatException e){
+           System.out.println("ogirib bolmaydi");
+       }
+    }
+}
+
+  output: 123
+
+
+  61. Berilgan String [] arrayni  1chi alifbo (o'sish) tartibida , keyin kamayish tartibida tartiblab konsolga chiqaring.
+	  strA = {"Vali", "Toshmat", "Abbos", "Eshmat", "Ali"};
+
+import java.util.Arrays;
+import java.util.Collections;
+public class Main {
+
+    public static void main(String[] args) {
+        String[] strA = {"Vali", "Toshmat", "Abbos", "Eshmat", "Ali"};
+        Arrays.sort(strA);
+        System.out.println("o'sish: " + Arrays.toString(strA));
+        Arrays.sort(strA, Collections.reverseOrder());
+        System.out.println(Arrays.toString(strA));
+
+    }
+}
+
+
+	output: o'sish:   [Abbos, Ali, Eshmat, Toshmat, Vali];
+		kamayish: [Vali, Toshmat, Eshmat, Ali, Abbos];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
